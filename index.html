@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Divyadharshan Premkumar | Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  
+  <style>
+    /* --- PROFESSIONAL PALETTE --- */
+    :root { 
+        --primary-color: #1565c0; /* Corporate Blue */
+        --sidebar-bg: #f0f4f8; 
+        --text-slate: #263238; 
+        --text-body: #455a64; 
+        --bg-light: #fafafa; 
+        --white: #ffffff; 
+        --accent: #1e88e5;
+    }
+    body { font-family: 'Montserrat', sans-serif; color: var(--text-body); background-color: var(--bg-light); line-height: 1.6; }
+
+    /* --- SIDEBAR --- */
+    ul.side-nav.fixed { background-color: var(--sidebar-bg); box-shadow: 1px 0 5px rgba(0,0,0,0.05); width: 260px; }
+    ul.side-nav.fixed li a { color: var(--text-slate); font-weight: 600; padding: 0 30px; }
+    ul.side-nav.fixed li a:hover { background-color: rgba(21, 101, 192, 0.1); border-radius: 0 20px 20px 0; }
+    .logo { padding: 40px 0 20px 0; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); margin-bottom: 20px; }
+    .profile-pic { border: 4px solid var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 130px; height: 130px; object-fit: cover; }
+    @media only screen and (min-width : 993px) { header, main, footer { padding-left: 260px; } }
+
+    /* --- MOBILE NAV FIXES --- */
+    .brand-logo { font-weight: 800 !important; color: var(--primary-color) !important; white-space: nowrap; }
+    @media only screen and (max-width : 600px) { .brand-logo { font-size: 1.4rem !important; } }
+
+    /* --- TYPOGRAPHY --- */
+    h1, h2, h3, h4, h5 { font-weight: 800; letter-spacing: -0.5px; color: var(--text-slate); margin-top: 0; }
+    .page-title { color: var(--text-slate); font-size: 2.5rem; margin-bottom: 40px; position: relative; display: inline-block; border-bottom: 4px solid var(--primary-color); padding-bottom: 10px; }
+    
+    /* --- INTRO & SECTIONS --- */
+    #intro { padding: 100px 0; min-height: 100vh; display: flex; align-items: center; }
+    .intro-name { color: var(--primary-color); font-size: 4rem; font-weight: 900; }
+    .intro-role { font-size: 1.5rem; font-weight: 700; color: var(--text-slate); margin-top: 10px; }
+    
+    /* --- CARDS --- */
+    .card { border-radius: 12px; background-color: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); margin-bottom: 30px; transition: transform 0.3s ease; height: 100%; display: flex; flex-direction: column; position: relative; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(21, 101, 192, 0.15); }
+    .card-content { flex-grow: 1; position: relative; }
+    .exp-header { margin-bottom: 15px; padding-right: 120px; /* Leave room for the button */ } 
+    .exp-company { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); display: block; }
+    .exp-role { font-size: 1.1rem; font-weight: 700; color: var(--text-slate); display: block; margin-top: 5px; }
+    .card-content ul li { list-style-type: none; position: relative; padding-left: 20px; margin-bottom: 8px; }
+    .card-content ul li::before { content: "•"; color: var(--primary-color); font-weight: bold; position: absolute; left: 0; }
+    
+    /* Flexbox layout for Experience logos to align items to the top */
+    .exp-row { display: flex; align-items: flex-start; margin-bottom: 0; }
+    .exp-logo-col { padding-top: 10px !important; }
+
+    /* --- BUTTONS --- */
+    .btn-custom { border-radius: 50px; padding: 12px 35px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin: 10px; display: inline-block; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(21, 101, 192, 0.2); cursor: pointer; text-decoration: none; color: inherit;}
+    .btn-fill { background-color: var(--primary-color); color: white; border: 2px solid var(--primary-color); }
+    .btn-fill:hover { background-color: #0d47a1; color: white; transform: translateY(-2px); }
+    .btn-outline { background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); padding: 8px 20px; font-size: 0.8rem; margin-left: 0; margin-top: 15px;}
+    .btn-outline:hover { background-color: var(--primary-color); color: white; transform: translateY(-2px); }
+    
+    /* Top Right Button specifically for Experience section */
+    .btn-top-right {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        margin: 0 !important;
+        padding: 6px 16px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .exp-header { padding-right: 0; } /* Remove padding on mobile */
+        .btn-top-right {
+            position: relative; /* Let it drop to bottom on mobile so it doesn't block text */
+            top: 0;
+            right: 0;
+            margin-top: 15px !important;
+            display: inline-block;
+        }
+    }
+    
+    /* --- SKILLS & CHIPS --- */
+    .skill-item { margin-bottom: 25px; } .skill-img { height: 50px; margin-bottom: 10px; } .skill-title { font-weight: 600; font-size: 0.9rem; }
+    
+    .course-chip {
+        display: inline-block;
+        background-color: var(--sidebar-bg);
+        color: var(--primary-color);
+        padding: 5px 12px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin: 3px;
+        border: 1px solid rgba(21, 101, 192, 0.2);
+    }
+
+    /* --- MODAL IMAGE FIXES --- */
+    .modal { border-radius: 8px; max-width: 800px; }
+    .modal-content img { max-width: 100%; height: auto; border-radius: 4px; display: block; margin: 0 auto; }
+
+    footer { background-color: var(--sidebar-bg); padding: 40px 0; text-align: center; color: var(--text-slate); margin-top: 50px; }
+    .social-icon { font-size: 2rem; color: var(--text-slate); margin: 0 15px; transition: color 0.3s; } .social-icon:hover { color: var(--primary-color); }
+    .row.flex { display: flex; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <nav class="hide-on-large-only white">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons" style="color: #1565c0;">menu</i></a>
+      <a href="#" class="brand-logo center">Divyadharshan P.</a>
+    </div>
+  </nav>
+
+  <ul id="slide-out" class="side-nav fixed">
+    <li class="logo"><img src="assets/img/your-photo.jpg" onerror="this.src='https://placehold.co/200x200?text=DP'" class="circle profile-pic"></li>
+      <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="Resume_Divyadharshan.pdf" target="_blank"><i class="fa fa-file-text-o"></i> View Resume</a></li>
+  </ul>
+
+  <main>
+    <section id="intro">
+      <div class="container"><div class="row"><div class="col s12 m10 offset-m1 center-align">
+        <h2 style="font-weight: 800; color: #37474f;">Hi, I'm</h2>
+        <h1 class="intro-name">Divyadharshan.</h1>
+        <h3 class="intro-role">Corporate Finance | Quantitative Analyst | Trader </h3>
+        <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto; color: #546e7a;">
+          IIM Graduate with a strong foundation in financial analysis, quantitative methods, and programming. Making complex financial processes simpler through automation and technology.
+        </p>
+        <div style="margin: 30px 0;">
+            <a href="https://linkedin.com/in/divyadharshan" class="social-icon" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a href="mailto:divyadharshanp4@gmail.com" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </div>
+        <div>
+            <a href="mailto:divyadharshanp4@gmail.com" class="btn-custom btn-fill">Let's Connect</a>
+        </div>
+      </div></div></div>
+    </section>
+
+
+    <section id="experience" class="scrollspy" style="margin-top: 80px;"><div class="container">
+        <h3 class="page-title">Experience</h3>
+        
+        <div class="card"><div class="card-content">
+            <a href="#modal-hinduja" class="modal-trigger btn-custom btn-outline btn-top-right">View Work</a>
+            <div class="row exp-row">
+                <div class="col s3 m2 center-align hide-on-small-only exp-logo-col">
+                    <img src="https://www.brutimes.com/cache/Hinduja%20Tech_500_x_350.webp" onerror="this.src='https://placehold.co/80x80?text=HT'" class="responsive-img" alt="Hinduja Tech Logo">
+                </div>
+                <div class="col s12 m10">
+                    <div class="exp-header">
+                        <span class="exp-company">Hinduja Tech</span>
+                        <span class="exp-role">Corporate Finance Intern</span>
+                        <span style="color:#90a4ae; display:block; margin-top:5px;">Jun 2025 – Jul 2025</span>
+                    </div>
+                    <ul>
+                        <li>Automated the billing accrual cycle and invoice reporting using Python scripts (Pandas, Openpyxl) and Excel VBA Macros, reducing 20 man-hours weekly.</li>
+                        <li>Deployed Power Automate solutions in Treasury to retrieve balance statements, enhancing efficiency and minimizing manual labor by 1 hour/day.</li>
+                        <li>Acquired practical, hands-on knowledge of Accounts Payable, Accounts Receivable, Journal entries, and the overall reimbursement pipeline.</li>
+                    </ul>
+                </div>
+            </div>
+        </div></div>
+
+        <div class="card"><div class="card-content">
+            <a href="#modal-airway" class="modal-trigger btn-custom btn-outline btn-top-right">View Work</a>
+            <div class="row exp-row">
+                <div class="col s3 m2 center-align hide-on-small-only exp-logo-col">
+                    <img src="https://airwaymedia.in/assets/img/logo/logo.png" onerror="this.src='https://placehold.co/80x80?text=AM'" class="responsive-img" alt="Airway Media Logo">
+                </div>
+                <div class="col s12 m10">
+                    <div class="exp-header">
+                        <span class="exp-company">Airway Media</span>
+                        <span class="exp-role">Analyst Intern</span>
+                        <span style="color:#90a4ae; display:block; margin-top:5px;">Apr 2025 – May 2025</span>
+                    </div>
+                    <ul>
+                        <li>Constructed a dynamic DCF model for valuation, incorporating scenario analysis to assess financial stability and adapt to economic conditions.</li>
+                        <li>Designed interactive financial Power BI dashboards to visualize cash flow projections and key valuation drivers.</li>
+                        <li>Managed the end-to-end sales cycle in a remote setup to promote digital products and generate revenue.</li>
+                    </ul>
+                </div>
+            </div>
+        </div></div>
+
+        <div class="card"><div class="card-content">
+            <a href="#modal-symbionic" class="modal-trigger btn-custom btn-outline btn-top-right">View Work</a>
+            <div class="row exp-row">
+                <div class="col s3 m2 center-align hide-on-small-only exp-logo-col">
+                    <img src="https://static-asset.inc42.com/logo/symbionic.png" onerror="this.src='https://placehold.co/80x80?text=ST'" class="responsive-img" alt="Symbionic Technology Logo">
+                </div>
+                <div class="col s12 m10">
+                    <div class="exp-header">
+                        <span class="exp-company">Symbionic Technology</span>
+                        <span class="exp-role">Embedded Developer Intern</span>
+                        <span style="color:#90a4ae; display:block; margin-top:5px;">May 2023 – Jul 2023</span>
+                    </div>
+                    <ul>
+                        <li>Developed a real-time AI/ML implementation grip classification system using ADS1299 by leveraging SVM models.</li>
+                        <li>Gained practical experience with the Pico MC board for EMG signal acquisition and processing.</li>
+                    </ul>
+                </div>
+            </div>
+        </div></div>
+
+        <div class="card"><div class="card-content">
+            <a href="#modal-elgi" class="modal-trigger btn-custom btn-outline btn-top-right">View Work</a>
+            <div class="row exp-row">
+                <div class="col s3 m2 center-align hide-on-small-only exp-logo-col">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.zkVdAF1m5Gl_n2uOIEQbFgHaHa?cb=defcachec2&rs=1&pid=ImgDetMain&o=7&rm=3" onerror="this.src='https://placehold.co/80x80?text=EE'" class="responsive-img" alt="Elgi Equipments Logo">
+                </div>
+                <div class="col s12 m10">
+                    <div class="exp-header">
+                        <span class="exp-company">Elgi Equipments</span>
+                        <span class="exp-role">Digital Transformation Intern</span>
+                        <span style="color:#90a4ae; display:block; margin-top:5px;">Jun 2022 – Jul 2022</span>
+                    </div>
+                    <ul>
+                        <li>Built a digital site planning web application for installing equipment in the air compressor room using Verge3D.</li>
+                        <li>Assisted in developing a digital transformation webpage for the service training and sales of air compressor products.</li>
+                    </ul>
+                </div>
+            </div>
+        </div></div>
+    </div></section>
+
+    <section id="projects" class="scrollspy" style="margin-top: 80px;"><div class="container">
+      <h3 class="page-title">Academic & Technical Projects</h3>
+      <div class="row flex">
+        
+        <div class="col s12 m6"><div class="card"><div class="card-content">
+            <span class="card-title" style="font-weight: 800; color: var(--primary-color); display:block; margin-bottom: 15px;">Portfolio Construction & Hedging</span>
+            <li><p>Constructed Equity portfolios utilizing the Single Index Model, successfully generating a 30% Average Annual Return (AAR) alongside multi-factor decomposition analysis.</p></li>
+            <li><p style="margin-top: 10px;">Strategically hedged portfolio exposure using an Index Options strategy, calculating and applying the Minimum Variance Hedge Ratio to minimize downside risk.</p></li>
+            <a href="#modal-proj1" class="modal-trigger btn-custom btn-outline" style="margin-top: 20px;">View Work</a>
+        </div></div></div>
+
+        <div class="col s12 m6"><div class="card"><div class="card-content">
+            <span class="card-title" style="font-weight: 800; color: var(--primary-color); display:block; margin-bottom: 15px;">Algorithmic Trading System</span>
+            <li><p>Engineered and deployed a real-time algorithmic trading system capable of automated order execution by integrating with the Zerodha Kite Connect API.</p></li>
+            <li><p style="margin-top: 10px;">Designed and backtested a confluence options trading strategy utilizing technical indicators like RSI, VWAP, and EMA crossovers, delivering an optimized 15% weekly return.</p></li>
+            <a href="#modal-proj2" class="modal-trigger btn-custom btn-outline" style="margin-top: 20px;">View Work</a>
+        </div></div></div>
+
+      </div>
+    </div></section>
+
+    <section id="skills" class="scrollspy" style="margin-top: 80px;"><div class="container">
+        <h3 class="page-title">Technical Arsenal & Expertise</h3>
+        <div class="card"><div class="card-content">
+            
+            <div class="row center-align" style="margin-top: 20px;">
+                <div class="col s6 m3 skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-img">
+                    <div class="skill-title">Python</div>
+                </div>
+
+                <div class="col s6 m3 skill-item">
+                    <img src="https://images.seeklogo.com/logo-png/52/1/microsoft-power-automate-logo-png_seeklogo-522770.png" class="skill-img">
+                    <div class="skill-title">Automation</div>
+                </div>
+                
+                <div class="col s6 m3 skill-item">
+                    <img src="https://cdn.freelogovectors.net/wp-content/uploads/2023/11/power-bi-logo-freelogovectors.net_.png" class="skill-img" style="object-fit: contain;">
+                    <div class="skill-title">Power BI</div>
+                </div>
+                <div class="col s6 m3 skill-item">
+                    <img src="https://download.logo.wine/logo/Microsoft_Excel/Microsoft_Excel-Logo.wine.png" class="skill-img">
+                    <div class="skill-title">Excel & VBA</div>
+                </div>
+            </div>
+            
+            <div class="row center-align" style="margin-top: 10px;">
+                <div class="col s12 m4 skill-item">
+                    <img src="https://logodix.com/logo/1278997.jpg" onerror="this.src='https://placehold.co/80x80?text=BBG'" class="skill-img" style="object-fit: contain; border-radius: 4px;">
+                    <div class="skill-title">Bloomberg Terminal</div>
+                </div>
+                <div class="col s12 m4 skill-item">
+                    <img src="https://seeklogo.com/images/Z/zerodha-kite-logo-89879A6A11-seeklogo.com.png" onerror="this.src='https://placehold.co/80x80?text=Zerodha'" class="skill-img" style="object-fit: contain; border-radius: 4px;">
+                    <div class="skill-title">Option Trading</div>
+                </div>
+                <div class="col s12 m4 skill-item">
+                    <img src="https://w7.pngwing.com/pngs/241/263/png-transparent-lean-six-sigma-business-process-lean-manufacturing-business-angle-text-trademark.png" onerror="this.src='https://placehold.co/80x80?text=6+Sigma'" class="skill-img" style="object-fit: contain;">
+                    <div class="skill-title">Six Sigma</div>
+                </div>
+            </div>
+            
+            <div class="divider" style="margin: 20px 0;"></div>
+            
+            <div class="row">
+                <div class="col s12 m6">
+                    <h5 style="font-size: 1.2rem; margin-bottom: 15px;">Finance & Analytics</h5>
+                    <ul style="padding-left: 15px;">
+                        <li style="list-style-type: disc;">Financial Modeling & DCF Valuation</li>
+                        <li style="list-style-type: disc;">Equity Market research</li>
+                        <li style="list-style-type: disc;">Risk Assessment & Client Reporting</li>
+                        <li style="list-style-type: disc;">Financial Statement Analysis</li>
+                    </ul>
+                </div>
+                <div class="col s12 m6">
+                    <h5 style="font-size: 1.2rem; margin-bottom: 15px;">Certifications</h5>
+                    <ul style="padding-left: 15px;">
+                        <li style="list-style-type: disc; margin-bottom: 8px;"><strong>Bloomberg Market Concept:</strong> 
+                        <li style="list-style-type: disc; margin-bottom: 8px;"><strong>NISM Series XV: Research Analyst</strong> 
+                        <li style="list-style-type: disc; margin-bottom: 8px;"><strong>JPMorgan Chase M & A simulation:</strong> 
+                        <li style="list-style-type: disc; margin-bottom: 8px;"><strong>Lean Six Sigma Green Belt</strong> 
+                    </ul>
+                </div>
+            </div>
+
+        </div></div>
+    </div></section>
+
+    <section id="education" class="scrollspy" style="margin-top: 80px;"><div class="container">
+      <h3 class="page-title">Education</h3>
+      <div class="row flex">
+        <div class="col s12 m6">
+          <div class="card"><div class="card-content">
+              <span class="exp-company">Indian Institute of Management, Bodh Gaya</span>
+              <p style="font-weight: 600;">MBA | 2024 - 2026</p>
+              <p>CGPA: 8.52/10 (86.52%)</p>
+              
+              <div style="margin-top: 20px;">
+                <h5 style="font-size: 1rem; font-weight: 800; color: var(--text-slate); margin-bottom: 10px;">Key Coursework</h5>
+                <div>
+                  <span class="course-chip">Security Analysis</span>
+                  <span class="course-chip">Portfolio Management</span>
+                  <span class="course-chip">Accounting</span>
+                  <span class="course-chip">Risk Management</span>
+                  <span class="course-chip">Derivatives</span>
+                </div>
+              </div>
+          </div></div>
+        </div>
+        
+        <div class="col s12 m6">
+          <div class="card"><div class="card-content">
+              <span class="exp-company">PSG College of Technology, Coimbatore</span>
+              <p style="font-weight: 600;">B.E. in Biomedical Engineering | 2019 - 2023</p>
+              <p>CGPA: 8.62/10 (86.20%)</p>
+              
+              <div style="margin-top: 20px;">
+                <h5 style="font-size: 1rem; font-weight: 800; color: var(--text-slate); margin-bottom: 10px;">Key Coursework</h5>
+                <div>
+                    <span class="course-chip">Medical Informatics</span>
+                    <span class="course-chip">Medical Equipment</span>
+                    <span class="course-chip">Hospital Management</span>
+                </div>
+              </div>
+          </div></div>
+        </div>
+      </div>
+    </div></section>
+    
+    <footer id="contact"><div class="container">
+        <p style="font-weight: 600;">© 2026 Divyadharshan Premkumar</p>
+        <p>+91 8754122947 | Salem, TN, 636008</p>
+        <div style="font-size: 1.5rem; margin-top: 10px;">
+            <a href="https://linkedin.com/in/divyadharshan" target="_blank" style="color: var(--text-slate); margin: 0 10px;"><i class="fa fa-linkedin"></i></a>
+            <a href="mailto:divyadharshanp4@gmail.com" style="color: var(--text-slate); margin: 0 10px;"><i class="fa fa-envelope"></i></a>
+        </div>
+    </div></footer>
+  </main>
+
+  <div id="modal-hinduja" class="modal">
+    <div class="modal-content"><img src="https://placehold.co/800x600?text=Hinduja+Tech+Work" alt="Hinduja Tech Work"></div>
+    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+  </div>
+  <div id="modal-airway" class="modal">
+    <div class="modal-content"><img src="https://placehold.co/800x600?text=Airway+Media+Work" alt="Airway Media Work"></div>
+    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+  </div>
+  <div id="modal-symbionic" class="modal">
+    <div class="modal-content"><img src="https://placehold.co/800x600?text=Symbionic+Tech+Work" alt="Symbionic Tech Work"></div>
+    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+  </div>
+  <div id="modal-elgi" class="modal">
+    <div class="modal-content"><img src="https://placehold.co/800x600?text=Elgi+Equipments+Work" alt="Elgi Equipments Work"></div>
+    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+  </div>
+
+  <div id="modal-proj1" class="modal">
+    <div class="modal-content"><img src="https://placehold.co/800x600?text=Portfolio+Construction+Project" alt="Portfolio Project"></div>
+    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+  </div>
+  <div id="modal-proj2" class="modal">
+    <div class="modal-content"><img src="https://placehold.co/800x600?text=Algo+Trading+System" alt="Algo Trading Project"></div>
+    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        // Initialize mobile sidebar menu
+        $('.button-collapse').sideNav({menuWidth: 260, edge: 'left', closeOnClick: true, draggable: true}); 
+        
+        // Initialize smooth scrolling spy for navigation highlighting
+        $('.scrollspy').scrollSpy({scrollOffset: 60});
+        
+        // Initialize Modals for the image pop-ups
+        $('.modal').modal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            opacity: .7, // Opacity of modal background
+            inDuration: 300, // Transition in duration
+            outDuration: 200, // Transition out duration
+        });
+    });
+  </script>
+</body>
+</html>
