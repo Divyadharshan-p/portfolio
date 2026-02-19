@@ -6,121 +6,179 @@
   <title>Divyadharshan Premkumar | Portfolio</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" relstylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   
   <style>
-    /* --- PROFESSIONAL PALETTE --- */
+    /* --- SLEEK PROFESSIONAL PALETTE --- */
     :root { 
         --primary-color: #1565c0; /* Corporate Blue */
-        --sidebar-bg: #f0f4f8; 
-        --text-slate: #263238; 
-        --text-body: #455a64; 
-        --bg-light: #fafafa; 
+        --sidebar-bg: #f8f9fa; 
+        --text-slate: #202124; 
+        --text-body: #5f6368; 
+        --bg-light: #f4f6f8; /* Soft off-white background */
         --white: #ffffff; 
         --accent: #1e88e5;
     }
     body { font-family: 'Montserrat', sans-serif; color: var(--text-body); background-color: var(--bg-light); line-height: 1.6; }
 
-    /* --- SIDEBAR --- */
-    ul.side-nav.fixed { background-color: var(--sidebar-bg); box-shadow: 1px 0 5px rgba(0,0,0,0.05); width: 260px; }
-    ul.side-nav.fixed li a { color: var(--text-slate); font-weight: 600; padding: 0 30px; }
-    ul.side-nav.fixed li a:hover { background-color: rgba(21, 101, 192, 0.1); border-radius: 0 20px 20px 0; }
-    .logo { padding: 40px 0 20px 0; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); margin-bottom: 20px; }
-    .profile-pic { border: 4px solid var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 130px; height: 130px; object-fit: cover; }
-    @media only screen and (min-width : 993px) { header, main, footer { padding-left: 260px; } }
-
-    /* --- MOBILE NAV FIXES --- */
-    .brand-logo { font-weight: 800 !important; color: var(--primary-color) !important; white-space: nowrap; }
-    @media only screen and (max-width : 600px) { .brand-logo { font-size: 1.4rem !important; } }
-
+    /* --- TOP NAVIGATION --- */
+    nav { background-color: rgba(255, 255, 255, 0.98) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.03) !important; border-bottom: 1px solid #eaeaea; }
+    .brand-logo { font-weight: 800 !important; color: var(--primary-color) !important; font-size: 1.5rem !important; }
+    .nav-links li a { color: var(--text-slate) !important; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
+    .nav-links li a:hover { color: var(--primary-color) !important; background-color: transparent !important;}
+    .side-nav li a { font-weight: 600; color: var(--text-slate); }
+    
     /* --- TYPOGRAPHY --- */
     h1, h2, h3, h4, h5 { font-weight: 800; letter-spacing: -0.5px; color: var(--text-slate); margin-top: 0; }
-    .page-title { color: var(--text-slate); font-size: 2.5rem; margin-bottom: 40px; position: relative; display: inline-block; border-bottom: 4px solid var(--primary-color); padding-bottom: 10px; }
+    .page-title { color: var(--text-slate); font-size: 2.2rem; margin-bottom: 40px; position: relative; display: inline-block; border-bottom: 4px solid var(--primary-color); padding-bottom: 10px; }
     
-    /* --- INTRO & SECTIONS --- */
-    #intro { padding: 100px 0; min-height: 100vh; display: flex; align-items: center; }
-    .intro-name { color: var(--primary-color); font-size: 4rem; font-weight: 900; }
-    .intro-role { font-size: 1.5rem; font-weight: 700; color: var(--text-slate); margin-top: 10px; }
+    /* --- HERO & ABOUT SECTION --- */
+    #hero { padding: 120px 0 60px 0; min-height: 80vh; display: flex; align-items: center; background: var(--white); }
+    .hero-row { display: flex; align-items: center; flex-wrap: wrap; } 
+    .hero-photo-container { padding: 20px; }
+    .hero-photo { border: 8px solid var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.08); width: 100%; max-width: 320px; border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; }
+    .intro-name { color: var(--primary-color); font-size: 3.5rem; font-weight: 900; margin-bottom: 10px;}
+    .intro-role { font-size: 1.3rem; font-weight: 700; color: var(--text-slate); margin-top: 0; margin-bottom: 20px;}
+    .about-text { font-size: 1.1rem; color: var(--text-body); margin-bottom: 15px; line-height: 1.8;}
     
-    /* --- CARDS --- */
-    .card { border-radius: 12px; background-color: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); margin-bottom: 30px; transition: transform 0.3s ease; height: 100%; display: flex; flex-direction: column; position: relative; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(21, 101, 192, 0.15); }
-    .card-content { flex-grow: 1; position: relative; }
-    .exp-header { margin-bottom: 15px; padding-right: 120px; /* Leave room for the button */ } 
+    .social-icon-hero { font-size: 1.8rem; color: var(--text-slate); transition: color 0.3s; display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background-color: var(--sidebar-bg); } 
+    .social-icon-hero:hover { color: var(--white); background-color: var(--primary-color); transform: translateY(-2px); }
+
+    /* --- WHAT I DO CARDS --- */
+    .service-card { padding: 35px 20px; border-radius: 16px; background-color: var(--white); box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease; height: 100%; text-align: center; border: 1px solid #f0f0f0;}
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(21, 101, 192, 0.1); }
+    .service-icon { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 20px; display: inline-block; background: #f0f6ff; padding: 20px; border-radius: 50%; width: 75px; height: 75px; line-height: 35px;}
+    .service-title { font-weight: 800; font-size: 1.1rem; color: var(--text-slate); margin-bottom: 20px;}
+    .service-skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+
+    /* --- CARDS (Experience & Projects) --- */
+    .card { border-radius: 16px; background-color: var(--white); box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; margin-bottom: 30px; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column; position: relative; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(21, 101, 192, 0.1); }
+    .card-content { padding: 30px 24px !important; flex-grow: 1; position: relative; }
+    
+    .exp-header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
     .exp-company { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); display: block; }
-    .exp-role { font-size: 1.1rem; font-weight: 700; color: var(--text-slate); display: block; margin-top: 5px; }
-    .card-content ul li { list-style-type: none; position: relative; padding-left: 20px; margin-bottom: 8px; }
-    .card-content ul li::before { content: "•"; color: var(--primary-color); font-weight: bold; position: absolute; left: 0; }
+    .exp-role { font-size: 1.1rem; font-weight: 700; color: var(--text-slate); display: block; margin-top: 2px; }
+    .exp-date { color: #80868b; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; display: block; }
     
-    /* Flexbox layout for Experience logos to align items to the top */
+    .card-content ul { margin-top: 5px; }
+    .card-content ul li { list-style-type: none; position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.95rem; }
+    .card-content ul li::before { content: "•"; color: var(--primary-color); font-weight: bold; position: absolute; left: 0; font-size: 1.2rem; line-height: 1.4;}
+    
     .exp-row { display: flex; align-items: flex-start; margin-bottom: 0; }
-    .exp-logo-col { padding-top: 10px !important; }
+    .exp-logo-col { padding-top: 5px !important; }
+    .exp-logo-col img { border-radius: 8px; border: 1px solid #f0f0f0; }
 
     /* --- BUTTONS --- */
-    .btn-custom { border-radius: 50px; padding: 12px 35px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin: 10px; display: inline-block; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(21, 101, 192, 0.2); cursor: pointer; text-decoration: none; color: inherit;}
-    .btn-fill { background-color: var(--primary-color); color: white; border: 2px solid var(--primary-color); }
-    .btn-fill:hover { background-color: #0d47a1; color: white; transform: translateY(-2px); }
-    .btn-outline { background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); padding: 8px 20px; font-size: 0.8rem; margin-left: 0; margin-top: 15px;}
-    .btn-outline:hover { background-color: var(--primary-color); color: white; transform: translateY(-2px); }
+    .btn-custom { border-radius: 50px; padding: 10px 30px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; transition: all 0.3s ease; cursor: pointer; text-decoration: none; color: inherit; box-shadow: none;}
     
-    /* Top Right Button specifically for Experience section */
-    .btn-top-right {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        margin: 0 !important;
-        padding: 6px 16px !important;
-        font-size: 0.75rem !important;
-    }
+    .btn-fill { background-color: var(--primary-color); color: white; border: 2px solid var(--primary-color); box-shadow: 0 4px 10px rgba(21, 101, 192, 0.2); }
+    .btn-fill:hover { background-color: #0d47a1; border-color: #0d47a1; color: white; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(21, 101, 192, 0.3);}
     
+    .btn-outline { background-color: transparent; color: var(--text-slate); border: 2px solid #e0e0e0; }
+    .btn-outline:hover { border-color: var(--primary-color); color: var(--primary-color); background: transparent; transform: translateY(-2px); }
+    
+    .btn-view-work { background-color: transparent; color: var(--primary-color); border: 1.5px solid var(--primary-color); padding: 6px 20px; font-size: 0.75rem; border-radius: 50px; transition: 0.3s; margin-top: 5px; display: inline-block;}
+    .btn-view-work:hover { background-color: var(--primary-color); color: white; box-shadow: 0 4px 10px rgba(21, 101, 192, 0.2); transform: translateY(-2px);}
+
+    /* Mobile adjustments */
     @media only screen and (max-width: 600px) {
-        .exp-header { padding-right: 0; } /* Remove padding on mobile */
-        .btn-top-right {
-            position: relative; /* Let it drop to bottom on mobile so it doesn't block text */
-            top: 0;
-            right: 0;
-            margin-top: 15px !important;
-            display: inline-block;
-        }
+        .exp-header-row { flex-direction: column; align-items: flex-start; }
+        .exp-header-right { text-align: left !important; margin-top: 10px; display: flex; align-items: center; justify-content: space-between; width: 100%; }
+        .exp-date { margin-bottom: 0; }
+        .btn-view-work { margin-top: 0; }
+        .intro-name { font-size: 2.8rem; }
+        #hero { padding-top: 80px; text-align: center; }
+        .hero-actions { justify-content: center; }
     }
     
     /* --- SKILLS & CHIPS --- */
-    .skill-item { margin-bottom: 25px; } .skill-img { height: 50px; margin-bottom: 10px; } .skill-title { font-weight: 600; font-size: 0.9rem; }
+    .skill-item { margin-bottom: 25px; } .skill-img { height: 50px; margin-bottom: 10px; border-radius: 6px; } .skill-title { font-weight: 600; font-size: 0.9rem; }
+    .course-chip { display: inline-block; background-color: #f0f6ff; color: var(--primary-color); padding: 6px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin: 4px; border: 1px solid rgba(21, 101, 192, 0.1); }
+
+    /* --- FULLSCREEN MODAL & X BUTTON FIXES --- */
+    .modal { 
+        border-radius: 12px; 
+        width: 90% !important; 
+        max-width: 1400px; 
+        height: auto !important;
+        max-height: 95% !important;
+        overflow: visible; 
+        background-color: transparent; 
+        box-shadow: none;
+    }
+    .modal-content { padding: 0 !important; position: relative; }
+    .modal-content img { 
+        width: 100%; 
+        height: auto; 
+        max-height: 90vh; 
+        object-fit: contain; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
     
-    .course-chip {
-        display: inline-block;
-        background-color: var(--sidebar-bg);
-        color: var(--primary-color);
-        padding: 5px 12px;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        margin: 3px;
-        border: 1px solid rgba(21, 101, 192, 0.2);
+    .modal-close-btn {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background-color: var(--white);
+        color: var(--text-slate);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    .modal-close-btn:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+        transform: scale(1.1);
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .modal { width: 95% !important; }
+        .modal-close-btn { top: 10px; right: 10px; }
     }
 
-    /* --- MODAL IMAGE FIXES --- */
-    .modal { border-radius: 8px; max-width: 800px; }
-    .modal-content img { max-width: 100%; height: auto; border-radius: 4px; display: block; margin: 0 auto; }
-
-    footer { background-color: var(--sidebar-bg); padding: 40px 0; text-align: center; color: var(--text-slate); margin-top: 50px; }
-    .social-icon { font-size: 2rem; color: var(--text-slate); margin: 0 15px; transition: color 0.3s; } .social-icon:hover { color: var(--primary-color); }
+    footer { background-color: var(--sidebar-bg); padding: 40px 0; text-align: center; color: var(--text-slate); margin-top: 50px; border-top: 1px solid #eaeaea;}
+    .social-icon { font-size: 1.8rem; color: var(--text-body); margin: 0 15px; transition: color 0.3s; } .social-icon:hover { color: var(--primary-color); }
     .row.flex { display: flex; flex-wrap: wrap; }
   </style>
 </head>
 <body>
-  <nav class="hide-on-large-only white">
-    <div class="nav-wrapper">
-      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons" style="color: #1565c0;">menu</i></a>
-      <a href="#" class="brand-logo center">Divyadharshan P.</a>
-    </div>
-  </nav>
 
-  <ul id="slide-out" class="side-nav fixed">
-    <li class="logo"><img src="photodp.png" onerror="this.src='https://placehold.co/200x200?text=DP'" class="circle profile-pic"></li>
-      <li><a href="#experience">Experience</a></li>
+  <div class="navbar-fixed">
+    <nav class="white z-depth-0">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">Divyadharshan</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color: var(--primary-color);">menu</i></a>
+        <ul class="right hide-on-med-and-down nav-links">
+          <li><a href="#hero">About</a></li>
+          <li><a href="#whatido">What I Do</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <ul class="side-nav" id="mobile-demo">
+    <li><a href="#hero">About</a></li>
+    <li><a href="#whatido">What I Do</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#education">Education</a></li>
@@ -129,38 +187,111 @@
   </ul>
 
   <main>
-    <section id="intro">
-      <div class="container"><div class="row"><div class="col s12 m10 offset-m1 center-align">
-        <h2 style="font-weight: 800; color: #37474f;">Hi, I'm</h2>
-        <h1 class="intro-name">Divyadharshan</h1>
-        <h3 class="intro-role">Corporate Finance | Quantitative Analyst | Trader </h3>
-        <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto; color: #546e7a;">
-          IIM Graduate with a strong foundation in financial analysis, quantitative methods, and programming. Making complex financial processes simpler through automation and technology.
-        </p>
-        <div style="margin: 30px 0;">
-            <a href="https://linkedin.com/in/divyadharshan" class="social-icon" target="_blank"><i class="fa fa-linkedin"></i></a>
-            <a href="mailto:divyadharshanp4@gmail.com" class="social-icon"><i class="fa fa-envelope"></i></a>
+    <section id="hero" class="scrollspy">
+      <div class="container">
+        <div class="row hero-row">
+          
+          <div class="col s12 m4 l4 center-align hero-photo-container">
+            <img src="photodp.png" onerror="this.src='https://placehold.co/400x400?text=Photo'" class="hero-photo" alt="Divyadharshan">
+          </div>
+          
+          <div class="col s12 m8 l7 offset-l1">
+            <h2 style="color: #37474f;">Hi, I'm</h2>
+            <h1 class="intro-name">Divyadharshan</h1>
+            <h3 class="intro-role">Corporate Finance | Quantitative Analyst | Trader </h3>
+            
+            <p class="about-text">
+              IIM Graduate with a strong foundation in financial analysis, quantitative methods, and programming. Making complex financial processes simpler through automation and technology.
+            </p>
+
+            <div class="hero-actions" style="margin-top: 30px; display: flex; align-items: center; gap: 15px;">
+                <a href="Resume_Divyadharshan.pdf" target="_blank" class="btn-custom btn-fill" style="margin: 0;">Resume</a>
+                <a href="https://linkedin.com/in/divyadharshan" target="_blank" class="social-icon-hero"><i class="fa fa-linkedin"></i></a>
+                <a href="mailto:divyadharshanp4@gmail.com" class="social-icon-hero"><i class="fa fa-envelope"></i></a>
+                <a href="https://wa.me/918754122947" target="_blank" class="social-icon-hero"><i class="fa fa-whatsapp"></i></a>
+            </div>
+          </div>
+
         </div>
-        <div>
-            <a href="mailto:divyadharshanp4@gmail.com" class="btn-custom btn-fill">Let's Connect</a>
-        </div>
-      </div></div></div>
+      </div>
     </section>
 
-    <section id="experience" class="scrollspy" style="margin-top: 80px;"><div class="container">
+    <section id="whatido" class="scrollspy" style="padding: 80px 0;">
+        <div class="container">
+            <h3 class="page-title">What I Do</h3>
+            <div class="row flex">
+                
+                <div class="col s12 m6 l3">
+                    <div class="service-card">
+                        <i class="fa fa-line-chart service-icon"></i>
+                        <h4 class="service-title">Trading</h4>
+                        <div class="service-skills-container">
+                            <span class="course-chip">Options Strategy</span>
+                            <span class="course-chip">Algo & API trading</span>
+                            <span class="course-chip">Chart Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l3">
+                    <div class="service-card">
+                        <i class="fa fa-pie-chart service-icon"></i>
+                        <h4 class="service-title">Equity Research</h4>
+                        <div class="service-skills-container">
+                            <span class="course-chip">Market Analysis</span>
+                            <span class="course-chip">Portfolio Management</span>
+                            <span class="course-chip">Financial reports Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l3">
+                    <div class="service-card">
+                        <i class="fa fa-calculator service-icon"></i>
+                        <h4 class="service-title">Financial Modeling</h4>
+                        <div class="service-skills-container">
+                            <span class="course-chip">DCF Valuation</span>
+                            <span class="course-chip">Financial Forecasting</span>
+                            <span class="course-chip">Scenario Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l3">
+                    <div class="service-card">
+                        <i class="fa fa-cogs service-icon"></i>
+                        <h4 class="service-title">Process Automation</h4>
+                        <div class="service-skills-container">
+                            <span class="course-chip">Python Scripting</span>
+                            <span class="course-chip">Excel VBA Macros</span>
+                            <span class="course-chip">Power Automate</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="scrollspy" style="background-color: var(--white); padding: 80px 0;">
+        <div class="container">
         <h3 class="page-title">Experience</h3>
         
         <div class="card"><div class="card-content">
-            <a href="#modal-hinduja" class="modal-trigger btn-custom btn-outline btn-top-right">View Work</a>
             <div class="row exp-row">
                 <div class="col s3 m2 center-align hide-on-small-only exp-logo-col">
                     <img src="https://www.brutimes.com/cache/Hinduja%20Tech_500_x_350.webp" onerror="this.src='https://placehold.co/80x80?text=HT'" class="responsive-img" alt="Hinduja Tech Logo">
                 </div>
                 <div class="col s12 m10">
-                    <div class="exp-header">
-                        <span class="exp-company">Hinduja Tech</span>
-                        <span class="exp-role">Corporate Finance Intern</span>
-                        <span style="color:#90a4ae; display:block; margin-top:5px;">Jun 2025 – Jul 2025</span>
+                    <div class="exp-header-row">
+                        <div>
+                            <span class="exp-company">Hinduja Tech</span>
+                            <span class="exp-role">Corporate Finance Intern</span>
+                        </div>
+                        <div class="exp-header-right" style="text-align: right;">
+                            <span class="exp-date">Jun 2025 – Jul 2025</span>
+                            <a href="#modal-hinduja" class="modal-trigger btn-custom btn-view-work">View Work</a>
+                        </div>
                     </div>
                     <ul>
                         <li>Automated the billing accrual cycle and invoice reporting using Python scripts (Pandas, Openpyxl) and Excel VBA Macros, reducing 20 man-hours weekly.</li>
@@ -172,16 +303,20 @@
         </div></div>
 
         <div class="card"><div class="card-content">
-            <a href="#modal-airway" class="modal-trigger btn-custom btn-outline btn-top-right">View Work</a>
             <div class="row exp-row">
                 <div class="col s3 m2 center-align hide-on-small-only exp-logo-col">
                     <img src="https://airwaymedia.in/assets/img/logo/logo.png" onerror="this.src='https://placehold.co/80x80?text=AM'" class="responsive-img" alt="Airway Media Logo">
                 </div>
                 <div class="col s12 m10">
-                    <div class="exp-header">
-                        <span class="exp-company">Airway Media</span>
-                        <span class="exp-role">Analyst Intern</span>
-                        <span style="color:#90a4ae; display:block; margin-top:5px;">Apr 2025 – May 2025</span>
+                    <div class="exp-header-row">
+                        <div>
+                            <span class="exp-company">Airway Media</span>
+                            <span class="exp-role">Analyst Intern</span>
+                        </div>
+                        <div class="exp-header-right" style="text-align: right;">
+                            <span class="exp-date">Apr 2025 – May 2025</span>
+                            <a href="#modal-airway" class="modal-trigger btn-custom btn-view-work">View Work</a>
+                        </div>
                     </div>
                     <ul>
                         <li>Constructed a dynamic DCF model for valuation, incorporating scenario analysis to assess financial stability and adapt to economic conditions.</li>
@@ -193,16 +328,20 @@
         </div></div>
 
         <div class="card"><div class="card-content">
-            <a href="#modal-symbionic" class="modal-trigger btn-custom btn-outline btn-top-right">View Work</a>
             <div class="row exp-row">
                 <div class="col s3 m2 center-align hide-on-small-only exp-logo-col">
                     <img src="https://static-asset.inc42.com/logo/symbionic.png" onerror="this.src='https://placehold.co/80x80?text=ST'" class="responsive-img" alt="Symbionic Technology Logo">
                 </div>
                 <div class="col s12 m10">
-                    <div class="exp-header">
-                        <span class="exp-company">Symbionic Technology</span>
-                        <span class="exp-role">Embedded Developer Intern</span>
-                        <span style="color:#90a4ae; display:block; margin-top:5px;">May 2023 – Jul 2023</span>
+                    <div class="exp-header-row">
+                        <div>
+                            <span class="exp-company">Symbionic Technology</span>
+                            <span class="exp-role">Embedded Developer Intern</span>
+                        </div>
+                        <div class="exp-header-right" style="text-align: right;">
+                            <span class="exp-date">May 2023 – Jul 2023</span>
+                            <a href="#modal-symbionic" class="modal-trigger btn-custom btn-view-work">View Work</a>
+                        </div>
                     </div>
                     <ul>
                         <li>Developed a real-time AI/ML implementation grip classification system using ADS1299 by leveraging SVM models.</li>
@@ -213,16 +352,20 @@
         </div></div>
 
         <div class="card"><div class="card-content">
-            <a href="#modal-elgi" class="modal-trigger btn-custom btn-outline btn-top-right">View Work</a>
             <div class="row exp-row">
                 <div class="col s3 m2 center-align hide-on-small-only exp-logo-col">
                     <img src="https://tse4.mm.bing.net/th/id/OIP.zkVdAF1m5Gl_n2uOIEQbFgHaHa?cb=defcachec2&rs=1&pid=ImgDetMain&o=7&rm=3" onerror="this.src='https://placehold.co/80x80?text=EE'" class="responsive-img" alt="Elgi Equipments Logo">
                 </div>
                 <div class="col s12 m10">
-                    <div class="exp-header">
-                        <span class="exp-company">Elgi Equipments</span>
-                        <span class="exp-role">Digital Transformation Intern</span>
-                        <span style="color:#90a4ae; display:block; margin-top:5px;">Jun 2022 – Jul 2022</span>
+                    <div class="exp-header-row">
+                        <div>
+                            <span class="exp-company">Elgi Equipments</span>
+                            <span class="exp-role">Digital Transformation Intern</span>
+                        </div>
+                        <div class="exp-header-right" style="text-align: right;">
+                            <span class="exp-date">Jun 2022 – Jul 2022</span>
+                            <a href="#modal-elgi" class="modal-trigger btn-custom btn-view-work">View Work</a>
+                        </div>
                     </div>
                     <ul>
                         <li>Built a digital site planning web application for installing equipment in the air compressor room using Verge3D.</li>
@@ -231,34 +374,50 @@
                 </div>
             </div>
         </div></div>
-    </div></section>
+        </div>
+    </section>
 
-    <section id="projects" class="scrollspy" style="margin-top: 80px;"><div class="container">
+    <section id="projects" class="scrollspy" style="padding: 80px 0;">
+      <div class="container">
       <h3 class="page-title">Academic & Technical Projects</h3>
       <div class="row flex">
         
-        <div class="col s12 m6"><div class="card"><div class="card-content">
-            <span class="card-title" style="font-weight: 800; color: var(--primary-color); display:block; margin-bottom: 15px;">Portfolio Construction & Hedging</span>
-            <ul>
-                <li>Constructed Equity portfolios utilizing the Single Index Model, successfully generating a 30% Average Annual Return (AAR) alongside multi-factor decomposition analysis.</li>
-                <li>Strategically hedged portfolio exposure using an Index Options strategy, calculating and applying the Minimum Variance Hedge Ratio to minimize downside risk.</li>
-            </ul>
-            <a href="#modal-proj1" class="modal-trigger btn-custom btn-outline" style="margin-top: 20px;">View Work</a>
+        <div class="col s12 m6"><div class="card"><div class="card-content" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <span class="card-title" style="font-weight: 800; color: var(--primary-color); display:flex; align-items:center; margin-bottom: 15px;">
+                    <i class="fa fa-pie-chart" style="margin-right: 12px; font-size: 1.6rem; color: var(--primary-color);"></i> Portfolio Construction
+                </span>
+                <ul>
+                    <li>Constructed Equity portfolios utilizing the Single Index Model, successfully generating a 30% Average Annual Return (AAR) alongside multi-factor decomposition analysis.</li>
+                    <li>Strategically hedged portfolio exposure using an Index Options strategy, calculating and applying the Minimum Variance Hedge Ratio to minimize downside risk.</li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#modal-proj1" class="modal-trigger btn-custom btn-view-work">View Work</a>
+            </div>
         </div></div></div>
 
-        <div class="col s12 m6"><div class="card"><div class="card-content">
-            <span class="card-title" style="font-weight: 800; color: var(--primary-color); display:block; margin-bottom: 15px;">Algorithmic Trading System</span>
-            <ul>
-                <li>Engineered and deployed a real-time algorithmic trading system capable of automated order execution by integrating with the Zerodha Kite Connect API.</li>
-                <li>Designed and backtested a confluence options trading strategy utilizing technical indicators like RSI, VWAP, and EMA crossovers, delivering an optimized 15% weekly return.</li>
-            </ul>
-            <a href="#modal-proj2" class="modal-trigger btn-custom btn-outline" style="margin-top: 20px;">View Work</a>
+        <div class="col s12 m6"><div class="card"><div class="card-content" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <span class="card-title" style="font-weight: 800; color: var(--primary-color); display:flex; align-items:center; margin-bottom: 15px;">
+                    <i class="fa fa-line-chart" style="margin-right: 12px; font-size: 1.6rem; color: var(--primary-color);"></i> Algorithmic Trading
+                </span>
+                <ul>
+                    <li>Engineered and deployed a real-time algorithmic trading system capable of automated order execution by integrating with the Zerodha Kite Connect API.</li>
+                    <li>Designed and backtested a confluence options trading strategy utilizing technical indicators like RSI, VWAP, and EMA crossovers, delivering an optimized 15% weekly return.</li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#modal-proj2" class="modal-trigger btn-custom btn-view-work">View Work</a>
+            </div>
         </div></div></div>
 
       </div>
-    </div></section>
+      </div>
+    </section>
 
-    <section id="skills" class="scrollspy" style="margin-top: 80px;"><div class="container">
+    <section id="skills" class="scrollspy" style="background-color: var(--white); padding: 80px 0;">
+        <div class="container">
         <h3 class="page-title">Technical Arsenal & Expertise</h3>
         <div class="card"><div class="card-content">
             
@@ -298,7 +457,7 @@
                 </div>
             </div>
             
-            <div class="divider" style="margin: 20px 0;"></div>
+            <div class="divider" style="margin: 20px 0; background-color: #f0f0f0;"></div>
             
             <div class="row">
                 <div class="col s12 m6">
@@ -322,9 +481,11 @@
             </div>
 
         </div></div>
-    </div></section>
+        </div>
+    </section>
 
-    <section id="education" class="scrollspy" style="margin-top: 80px;"><div class="container">
+    <section id="education" class="scrollspy" style="padding: 80px 0;">
+      <div class="container">
       <h3 class="page-title">Education</h3>
       <div class="row flex">
         <div class="col s12 m6">
@@ -363,58 +524,62 @@
           </div></div>
         </div>
       </div>
-    </div></section>
+      </div>
+    </section>
     
-    <footer id="contact"><div class="container">
-        <p style="font-weight: 600;">© 2026 Divyadharshan Premkumar</p>
-        <p>+91 8754122947 | Salem, TN, 636008</p>
-        <div style="font-size: 1.5rem; margin-top: 10px;">
-            <a href="https://linkedin.com/in/divyadharshan" target="_blank" style="color: var(--text-slate); margin: 0 10px;"><i class="fa fa-linkedin"></i></a>
-            <a href="mailto:divyadharshanp4@gmail.com" style="color: var(--text-slate); margin: 0 10px;"><i class="fa fa-envelope"></i></a>
+    <footer id="contact">
+        <div class="container">
+            <p style="font-weight: 600; font-size: 1.1rem; color: var(--text-slate);">Divyadharshan Premkumar</p>
+            <p>+91 8754122947 | Salem, TN, 636008</p>
+            <div style="font-size: 1.5rem; margin-top: 15px;">
+                <a href="https://linkedin.com/in/divyadharshan" target="_blank" class="social-icon"><i class="fa fa-linkedin"></i></a>
+                <a href="mailto:divyadharshanp4@gmail.com" class="social-icon"><i class="fa fa-envelope"></i></a>
+            </div>
+            <p style="font-size: 0.85rem; margin-top: 20px;">© 2026 All rights reserved.</p>
         </div>
-    </div></footer>
+    </footer>
   </main>
 
   <div id="modal-hinduja" class="modal">
-    <div class="modal-content"><img src="1.png" alt="Hinduja Tech Work"></div>
-    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+    <a href="#!" class="modal-action modal-close modal-close-btn"><i class="fa fa-times"></i></a>
+    <div class="modal-content"><img src="1.png" onerror="this.src='https://placehold.co/1200x800?text=Hinduja+Tech+Work'" alt="Hinduja Tech Work"></div>
   </div>
   <div id="modal-airway" class="modal">
-    <div class="modal-content"><img src="3.png" alt="Airway Media Work"></div>
-    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+    <a href="#!" class="modal-action modal-close modal-close-btn"><i class="fa fa-times"></i></a>
+    <div class="modal-content"><img src="3.png" onerror="this.src='https://placehold.co/1200x800?text=Airway+Media+Work'" alt="Airway Media Work"></div>
   </div>
   <div id="modal-symbionic" class="modal">
-    <div class="modal-content"><img src="4.png" alt="Symbionic Tech Work"></div>
-    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+    <a href="#!" class="modal-action modal-close modal-close-btn"><i class="fa fa-times"></i></a>
+    <div class="modal-content"><img src="4.png" onerror="this.src='https://placehold.co/1200x800?text=Symbionic+Tech+Work'" alt="Symbionic Tech Work"></div>
   </div>
   <div id="modal-elgi" class="modal">
-    <div class="modal-content"><img src="5.png" alt="Elgi Equipments Work"></div>
-    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+    <a href="#!" class="modal-action modal-close modal-close-btn"><i class="fa fa-times"></i></a>
+    <div class="modal-content"><img src="5.png" onerror="this.src='https://placehold.co/1200x800?text=Elgi+Equipments+Work'" alt="Elgi Equipments Work"></div>
   </div>
 
   <div id="modal-proj1" class="modal">
-    <div class="modal-content"><img src="https://placehold.co/800x600?text=Portfolio+Construction+Project" alt="Portfolio Project"></div>
-    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+    <a href="#!" class="modal-action modal-close modal-close-btn"><i class="fa fa-times"></i></a>
+    <div class="modal-content"><img src="6.png" onerror="this.src='https://placehold.co/1200x800?text=Portfolio+Construction+Project'" alt="Portfolio Project"></div>
   </div>
   <div id="modal-proj2" class="modal">
-    <div class="modal-content"><img src="https://placehold.co/800x600?text=Algo+Trading+System" alt="Algo Trading Project"></div>
-    <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Close</a></div>
+    <a href="#!" class="modal-action modal-close modal-close-btn"><i class="fa fa-times"></i></a>
+    <div class="modal-content"><img src="7.png" onerror="this.src='https://placehold.co/1200x800?text=Algo+Trading+System'" alt="Algo Trading Project"></div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script>
     $(document).ready(function(){
-        // Initialize mobile sidebar menu
+        // Initialize mobile top navigation menu
         $('.button-collapse').sideNav({menuWidth: 260, edge: 'left', closeOnClick: true, draggable: true}); 
         
-        // Initialize smooth scrolling spy for navigation highlighting
-        $('.scrollspy').scrollSpy({scrollOffset: 60});
+        // Initialize smooth scrolling spy for navigation highlighting (Offset to account for sticky navbar)
+        $('.scrollspy').scrollSpy({scrollOffset: 65});
         
         // Initialize Modals for the image pop-ups
         $('.modal').modal({
             dismissible: true, // Modal can be dismissed by clicking outside of the modal
-            opacity: .7, // Opacity of modal background
+            opacity: .8, // Opacity of modal background (darker for focus)
             inDuration: 300, // Transition in duration
             outDuration: 200, // Transition out duration
         });
